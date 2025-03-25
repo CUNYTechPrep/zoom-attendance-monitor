@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: '22.14.0'
       - name: Install Packages
-        run: npm install:all
+        run: npm run install:all
       - name: Lint Backend
         run: npm run lint:be
       - name: Lint Frontend
@@ -37,7 +37,7 @@ jobs:
         with:
           node-version: '22.14.0'
       - name: Install Packages
-        run: npm run install
+        run: npm install
         working-directory: ./backend
       - name: Test Backend
         run: npm run test
