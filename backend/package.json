@@ -1,0 +1,44 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "engines": {
+    "node": "22.14.0"
+  },
+  "description": "REST API backend for the zoom attendance monitor",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch index.js",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "generate:model": "npx sequelize-cli model:generate",
+    "generate:migration": "npx sequelize-cli migration:generate --name",
+    "generate:seed": "npx sequelize-cli seed:generate --name",
+    "migrate": "npx sequelize-cli db:migrate",
+    "seed": "npx sequelize-cli db:seed:all"
+  },
+  "author": "CUNY Tech Prep",
+  "license": "MIT",
+  "dependencies": {
+    "@types/jest": "^29.5.14",
+    "express": "^5.0.1",
+    "pg": "^8.14.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.6",
+    "sqlite3": "^5.1.7"
+  },
+  "jest": {
+    "transform": {
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!(module-name)/)"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.10",
+    "@babel/preset-env": "^7.26.9",
+    "babel-jest": "^29.7.0",
+    "babel-register": "^6.26.0",
+    "jest": "^29.7.0",
+    "supertest": "^7.1.0"
+  }
+}
