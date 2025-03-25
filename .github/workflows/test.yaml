@@ -18,12 +18,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22.14.0'
+      - name: Install Packages
+        run: npm install:all
       - name: Lint Backend
-        run: npm lint:be
+        run: npm run lint:be
       - name: Lint Frontend
-        run: npm lint:fe
+        run: npm run lint:fe
       - name: Run Prettier
-        run: npm prettier:ci
+        run: npm run prettier:ci
 
   test:
     runs-on: ubuntu-latest
@@ -34,6 +36,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22.14.0'
+      - name: Install Packages
+        run: npm run install
+        working-directory: ./backend
       - name: Test Backend
-        run: npm test
+        run: npm run test
         working-directory: ./backend
