@@ -27,8 +27,7 @@
     "sqlite3": "^5.1.7"
   },
   "jest": {
-    "transform": {
-    },
+    "transform": {},
     "transformIgnorePatterns": [
       "node_modules/(?!(module-name)/)"
     ]

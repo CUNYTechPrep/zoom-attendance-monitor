@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "tool to monitor zoom attendance",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:be": "eslint ./backend --ext .js,.jsx,.ts,.tsx",
+    "lint:fe": "eslint --config ./frontend/eslint.config.js ./frontend --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "prettier:ci": "prettier . --check",
     "format": "prettier --write .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
