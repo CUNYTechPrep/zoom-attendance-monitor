@@ -1,0 +1,39 @@
+name: Test Suite
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.14.0'
+      - name: Lint Backend
+        run: npm lint:be
+      - name: Lint Frontend
+        run: npm lint:fe
+      - name: Run Prettier
+        run: npm prettier:ci
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.14.0'
+      - name: Test Backend
+        run: npm test
+        working-directory: ./backend
