@@ -5,6 +5,8 @@ const app = express();
 
 app.use(express.json());
 
+app.use(express.static('../frontend/dist'));
+
 app.use('/api', appRoutes);
 
 app.use((req, res) => {
