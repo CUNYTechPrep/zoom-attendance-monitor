@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: '22.14.0'
       - name: Install Packages
-        run: npm run install:all
+        run: npm install && npm run install:all
       - name: Lint Backend
         run: npm run lint:be
       - name: Lint Frontend
