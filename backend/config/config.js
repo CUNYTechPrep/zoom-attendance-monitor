@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 export default {
   development: {
     username: 'root',
