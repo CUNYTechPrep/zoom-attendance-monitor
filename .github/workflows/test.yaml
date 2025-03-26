@@ -29,7 +29,7 @@ jobs:
         run: npm run format
         working-directory: ./backend
       - name: Run Tests
-        run: npm run test
+        run: npm run test:ci
         working-directory: ./backend
 
   frontend:
