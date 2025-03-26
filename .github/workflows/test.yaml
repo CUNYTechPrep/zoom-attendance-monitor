@@ -32,8 +32,8 @@ jobs:
         run: npm run test
         working-directory: ./backend
 
-  format:
-    name: Lint, Format, and Test Backend
+  frontend:
+    name: Lint, Format, and Test Frontend
     runs-on: ubuntu-latest
 
     steps:

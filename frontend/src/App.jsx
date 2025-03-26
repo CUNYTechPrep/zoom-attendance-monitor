@@ -1,10 +1,10 @@
-import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
-import PostsListPage from "./pages/PostsListPage";
-import PostFormPage from "./pages/PostFormPage";
-import ShowPostPage from "./pages/ShowPostPage";
-import AboutUsPage from "./pages/AboutUsPage";
+import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom';
+import PostsListPage from './pages/PostsListPage';
+import PostFormPage from './pages/PostFormPage';
+import ShowPostPage from './pages/ShowPostPage';
+import AboutUsPage from './pages/AboutUsPage';
 
-import "./App.css";
+import './App.css';
 
 function Navigation() {
   return (

@@ -1,4 +1,4 @@
-import { Model } from "sequelize";
+import { Model } from 'sequelize';
 
 export default (sequelize, DataTypes) => {
   class MicroPost extends Model {}
@@ -16,7 +16,7 @@ export default (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "MicroPost",
+      modelName: 'MicroPost',
     }
   );
 

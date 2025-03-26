@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import MicroPostCard from "../components/MicroPostCard";
-import LoadingSpinner from "../components/LoadingSpinner";
-import ErrorAlert from "../components/ErrorAlert";
+import { useState, useEffect } from 'react';
+import MicroPostCard from '../components/MicroPostCard';
+import LoadingSpinner from '../components/LoadingSpinner';
+import ErrorAlert from '../components/ErrorAlert';
 
 function PostsListPage() {
   const [posts, setPosts] = useState([]);
@@ -12,12 +12,12 @@ function PostsListPage() {
     async function getData() {
       setLoading(true);
       try {
-        let response = await fetch("/api/micro_posts");
+        let response = await fetch('/api/micro_posts');
         let allPosts = await response.json();
         setPosts(allPosts);
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching all micro_posts", error);
+        console.error('Error fetching all micro_posts', error);
         setError(true);
       }
     }
