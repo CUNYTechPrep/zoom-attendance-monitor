@@ -9,27 +9,8 @@ on:
       - main
 
 jobs:
-  lint:
-    name: Lint & Format Files
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22.14.0'
-      - name: Install Packages
-        run: npm install && npm run install:all
-      - name: Lint Backend
-        run: npm run lint:be
-      - name: Lint Frontend
-        run: npm run lint:fe
-      - name: Run Prettier
-        run: npm run prettier:ci
-
-  test:
-    name: Run Tests
+  backend:
+    name: Lint, Format, and Test Backend
     runs-on: ubuntu-latest
 
     steps:
@@ -41,6 +22,32 @@ jobs:
       - name: Install Packages
         run: npm install
         working-directory: ./backend
-      - name: Test Backend
+      - name: Lint Backend
+        run: npm run lint
+        working-directory: ./backend
+      - name: Run Prettier
+        run: npm run format
+        working-directory: ./backend
+      - name: Run Tests
         run: npm run test
         working-directory: ./backend
+
+  format:
+    name: Lint, Format, and Test Backend
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.14.0'
+      - name: Install Packages
+        run: npm install
+        working-directory: ./frontend
+      - name: Lint Frontend
+        run: npm run lint
+        working-directory: ./frontend
+      - name: Run Prettier
+        run: npm run format
+        working-directory: ./frontend

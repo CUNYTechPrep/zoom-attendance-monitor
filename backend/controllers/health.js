@@ -1,6 +1,11 @@
-import db from '../models/index.js';
+import { sequelize } from '../models/index.js';
+import { Router } from 'express';
 
-export const healthcheck = async (req, res) => {
-  await db.sequelize.authenticate();
+const router = Router();
+
+router.get('/', async (req, res) => {
+  await sequelize.authenticate();
   res.status(200).send({ message: 'ok' });
-};
+});
+
+export default router;
