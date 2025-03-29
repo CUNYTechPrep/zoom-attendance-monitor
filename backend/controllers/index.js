@@ -9,6 +9,6 @@ router.use('/micro_posts', microPostsController);
 
 router.use('/healthcheck', healthcheckController);
 
-router.use('/webhooks', webhookController);
+router.use('/webhook', webhookController);
 
 export default router;
