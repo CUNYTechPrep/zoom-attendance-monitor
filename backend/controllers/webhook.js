@@ -15,7 +15,7 @@ router.post('/', (req, res) => {
 
   switch (event) {
     case WEBHOOK_VALIDATION: {
-      const plainToken = req.body.payload.plaintToken;
+      const plainToken = req.body.payload.plainToken;
 
       const encryptedToken = validateEndpoint(
         plainToken,
