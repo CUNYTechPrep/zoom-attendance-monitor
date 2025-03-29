@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { validateEndpoint } from '../service/webhook.js';
+import { hashZoomPlainToken } from '../service/webhook.js';
 import { WEBHOOK_VALIDATION } from '../service/events.js';
 
 const router = Router();
@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
     case WEBHOOK_VALIDATION: {
       const plainToken = req.body.payload.plainToken;
 
-      const encryptedToken = validateEndpoint(
+      const encryptedToken = hashZoomPlainToken(
         plainToken,
         process.env.ZOOM_WEBHOOK_SECRET_TOKEN
       );
