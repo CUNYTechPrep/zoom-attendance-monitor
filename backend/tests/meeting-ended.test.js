@@ -1,5 +1,6 @@
 import request from 'supertest';
 import app from '../app';
+import { jest } from '@jest/globals';
 import { WEBHOOK_MEETING_ENDED } from '../service/events.js';
 
 describe('meeting ended webhook', () => {
