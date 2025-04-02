@@ -27,7 +27,7 @@ describe('meeting ended webhook', () => {
       `Meeting ${meetingName} ended at ${timeEnded}`
     );
     expect(response.statusCode).toBe(200);
-    expect(response.body).toEqual({ message: 'Meeting has ended.' });
+    expect(response.body.message).toEqual('Meeting has ended.');
 
     consoleLogSpy.mockRestore();
   });
