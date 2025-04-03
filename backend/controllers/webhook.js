@@ -1,6 +1,9 @@
 import { Router } from 'express';
 import { hashZoomPlainToken } from '../service/webhook.js';
-import { WEBHOOK_VALIDATION } from '../service/events.js';
+import {
+  WEBHOOK_VALIDATION,
+  WEBHOOK_MEETING_ENDED,
+} from '../service/events.js';
 
 const router = Router();
 
@@ -23,6 +26,13 @@ router.post('/', (req, res) => {
       );
 
       return res.status(200).json({ plainToken, encryptedToken });
+    }
+    case WEBHOOK_MEETING_ENDED: {
+      const meetingName = req.body.payload.object.topic;
+      const timeEnded = req.body.payload.object.end_time;
+
+      console.log(`Meeting ${meetingName} ended at ${timeEnded}`);
+      return res.status(200).json({ message: 'Meeting has ended.' });
     }
     default:
       console.log(`no match found for event ${event}`);
