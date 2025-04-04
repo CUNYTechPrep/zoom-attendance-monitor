@@ -19,7 +19,7 @@ describe('meeting started webhook', () => {
         payload: {
           object: {
             topic: meetingName,
-            end_time: timeStarted,
+            start_time: timeStarted,
           },
         },
       });
