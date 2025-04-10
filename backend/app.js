@@ -3,7 +3,7 @@ import morgan from 'morgan';
 import process from 'node:process';
 import path from 'node:path';
 import apiRouter from './controllers/index.js';
-import { validateEnv } from './config/config.js';  // Import the validator
+import { validateEnv } from './config/config.js'; // Import the validator
 
 const app = express();
 
@@ -11,7 +11,7 @@ const app = express();
 const missingVars = validateEnv();
 if (missingVars.length > 0) {
   console.error('❌ Server cannot start:');
-  missingVars.forEach(varName => console.error(`   ${varName} is required`));
+  missingVars.forEach((varName) => console.error(`   ${varName} is required`));
   process.exit(1);
 }
 
