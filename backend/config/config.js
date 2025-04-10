@@ -1,5 +1,14 @@
 import 'dotenv/config';
 
+export const validateEnv = () => {
+  const requiredVars = [
+    'ZOOM_WEBHOOK_SECRET_TOKEN',
+    'PORT'
+  ];
+
+  return requiredVars.filter(varName => !process.env[varName]);
+};
+
 export default {
   development: {
     username: 'root',
@@ -24,4 +33,7 @@ export default {
     host: process.env.HOST,
     dialect: 'postgresql',
   },
+  // Add the required vars to the exported config
+  ZOOM_WEBHOOK_SECRET_TOKEN: process.env.ZOOM_WEBHOOK_SECRET_TOKEN,
+  PORT: process.env.PORT
 };
