@@ -27,6 +27,6 @@ export async function up(queryInterface, Sequelize) {
     }
   });
 }
-export async function down(queryInterface, Sequelize) {
+export async function down(queryInterface, _Sequelize) {
     await queryInterface.dropTable('Students');
 }
