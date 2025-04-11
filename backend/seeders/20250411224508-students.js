@@ -2,7 +2,8 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, _Sequelize) {
+  // eslint-disable-next-line no-unused-vars
+  async up(queryInterface, Sequelize) {
     /**
      * Add seed commands here.
      *
@@ -42,7 +43,8 @@ module.exports = {
     );
   },
 
-  async down(queryInterface, _Sequelize) {
+  // eslint-disable-next-line no-unused-vars
+  async down(queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
      *

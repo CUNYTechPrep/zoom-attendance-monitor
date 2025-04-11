@@ -27,6 +27,8 @@ export async function up(queryInterface, Sequelize) {
     }
   });
 }
+
+// eslint-disable-next-line no-unused-vars
 export async function down(queryInterface, _Sequelize) {
     await queryInterface.dropTable('Students');
 }
