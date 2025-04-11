@@ -4,31 +4,31 @@ export async function up(queryInterface, Sequelize) {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
-      type: Sequelize.INTEGER
+      type: Sequelize.INTEGER,
     },
     name: {
-        allowNull: false,
-        type: Sequelize.STRING
+      allowNull: false,
+      type: Sequelize.STRING,
     },
     email: {
-        type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     student_id: {
       allowNull: false,
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
     },
     createdAt: {
       allowNull: false,
-      type: Sequelize.DATE
+      type: Sequelize.DATE,
     },
     updatedAt: {
       allowNull: false,
-      type: Sequelize.DATE
-    }
+      type: Sequelize.DATE,
+    },
   });
 }
 
 // eslint-disable-next-line no-unused-vars
 export async function down(queryInterface, _Sequelize) {
-    await queryInterface.dropTable('Students');
+  await queryInterface.dropTable('Students');
 }
