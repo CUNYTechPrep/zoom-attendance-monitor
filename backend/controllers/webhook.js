@@ -3,6 +3,7 @@ import { hashZoomPlainToken } from '../service/webhook.js';
 import {
   WEBHOOK_VALIDATION,
   WEBHOOK_MEETING_ENDED,
+  WEBHOOK_MEETING_STARTED,
   WEBHOOK_PARTICIPANT_JOINED,
   WEBHOOK_PARTICIPANT_JOINED_BH
 } from '../service/events.js';
@@ -35,6 +36,13 @@ router.post('/', (req, res) => {
 
       console.log(`Meeting ${meetingName} ended at ${timeEnded}`);
       return res.status(200).json({ message: 'Meeting has ended.' });
+    }
+    case WEBHOOK_MEETING_STARTED: {
+      const meetingName = req.body.payload.object.topic;
+      const timeStarted = req.body.payload.object.start_time;
+
+      console.log(`Meeting ${meetingName} started at ${timeStarted}`);
+      return res.status(201).json({ message: 'Meeting has started.' });
     }
     case WEBHOOK_PARTICIPANT_JOINED:{
          console.log('participant joined', req.body.payload.object.participant);
