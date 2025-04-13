@@ -3,6 +3,8 @@ import { hashZoomPlainToken } from '../service/webhook.js';
 import {
   WEBHOOK_VALIDATION,
   WEBHOOK_MEETING_ENDED,
+  WEBHOOK_PARTICIPANT_JOINED,
+  WEBHOOK_PARTICIPANT_JOINED_BH
 } from '../service/events.js';
 
 const router = Router();
@@ -34,6 +36,26 @@ router.post('/', (req, res) => {
       console.log(`Meeting ${meetingName} ended at ${timeEnded}`);
       return res.status(200).json({ message: 'Meeting has ended.' });
     }
+    case WEBHOOK_PARTICIPANT_JOINED:{
+         console.log('participant joined', req.body.payload.object.participant);
+        const participant_info = JSON.stringify({
+          account_id: req.body.payload.account_id,
+          user_name: req.body.payload.object.participant.user_name,
+          phone_number: req.body.payload.object.participant.phone_number
+            ? req.body.payload.object.participant.phone_number
+            : '',
+        });
+        return res.status(200).json(participant_info);
+    }
+    case WEBHOOK_PARTICIPANT_JOINED_BH:{
+      const participant_info = JSON.stringify({
+        account_id: req.body.payload.account_id,
+        user_name: req.body.payload.object.participant.user_name,
+      });
+   console.log('participant joined before host', req.body);
+   return res.status(200).json(participant_info);
+  }
+
     default:
       console.log(`no match found for event ${event}`);
       return res.status(200).end();
