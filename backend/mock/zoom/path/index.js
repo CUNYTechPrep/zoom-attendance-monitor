@@ -18,6 +18,7 @@ if (os.platform() === 'win32') {
 zoomRecordingPath = path.resolve(zoomRecordingPath);
 
 if (!fs.existsSync(zoomRecordingPath)) {
+  console.warn(`${zoomRecordingPath} was not found. Attempting to create it.`);
   fs.mkdirSync(zoomRecordingPath, { recursive: true });
 }
 
