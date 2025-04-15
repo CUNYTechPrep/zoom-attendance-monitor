@@ -1,7 +1,9 @@
 import request from 'supertest';
 import app from '../app';
-import { WEBHOOK_PARTICIPANT_JOINED } from '../service/events.js';
-import { WEBHOOK_PARTICIPANT_JOINED_BH } from '../service/events.js';
+import {
+  WEBHOOK_PARTICIPANT_JOINED,
+  WEBHOOK_PARTICIPANT_JOINED_BH,
+} from '../service/events.js';
 
 const participantJoined = {
   object: {
@@ -37,7 +39,7 @@ async function handleRequest(userData, eventToTrigger, expectedReturnValue) {
     });
 
   expect(response.statusCode).toBe(200);
-  const parsedRes = JSON.parse(response.text)
+  const parsedRes = JSON.parse(response.text);
   expect(parsedRes).toEqual(expectedReturnValue);
 }
 
@@ -48,7 +50,7 @@ describe('participant joined', () => {
       participant_name: 'Jill Chill',
       join_time: '2025-04-15',
     }));
-  test('trigger and compare backend response', () =>
+  test('trigger and compare backend response join before host', () =>
     handleRequest(participantJoinedBeforeHost, WEBHOOK_PARTICIPANT_JOINED_BH, {
       participant_id: '1234567890',
       participant_name: 'Jill Chill',
