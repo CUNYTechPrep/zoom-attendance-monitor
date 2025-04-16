@@ -39,8 +39,7 @@ async function handleRequest(userData, eventToTrigger, expectedReturnValue) {
     });
 
   expect(response.statusCode).toBe(200);
-  const parsedRes = JSON.parse(response.text);
-  expect(parsedRes).toEqual(expectedReturnValue);
+  expect(response.body).toEqual(expectedReturnValue);
 }
 
 describe('participant joined', () => {
