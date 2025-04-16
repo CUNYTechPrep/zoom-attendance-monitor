@@ -10,7 +10,6 @@ export const fileWatcher = async () => {
 
   for await (const event of watcher) {
     const { filename, eventType } = event;
-    console.log(`event type: ${eventType}`);
     if (eventType !== 'rename') {
       continue;
     }
