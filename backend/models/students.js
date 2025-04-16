@@ -4,9 +4,22 @@ export default (sequelize, DataTypes) => {
   class Students extends Model {}
   Students.init(
     {
-      name: DataTypes.STRING,
-      email: DataTypes.STRING,
-      student_id: DataTypes.STRING,
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          isEmail: true,
+          notEmpty: true,
+        },
+      },
+      student_id: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
     },
     {
       sequelize,
