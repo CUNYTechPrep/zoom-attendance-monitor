@@ -11,6 +11,7 @@ export async function up(queryInterface, Sequelize) {
       type: Sequelize.STRING,
     },
     email: {
+      allowNull: false,
       type: Sequelize.STRING,
     },
     student_id: {
