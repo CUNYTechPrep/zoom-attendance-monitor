@@ -10,11 +10,14 @@ export const fileWatcher = async () => {
 
   for await (const event of watcher) {
     const { filename, eventType } = event;
-    if (!filename || filename === '.DS_Store') {
+    console.log(`event type: ${eventType}`);
+    if (eventType !== 'rename') {
       continue;
     }
 
-    console.log(`event type: ${eventType}`);
+    if (!filename || filename === '.DS_Store') {
+      continue;
+    }
 
     const dir = path.resolve(zoomRecordingPath, filename);
 
