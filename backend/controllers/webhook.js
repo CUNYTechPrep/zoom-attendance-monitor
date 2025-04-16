@@ -13,9 +13,8 @@ router.post('/', (req, res) => {
   const { event } = req.body;
 
   if (process.env.NODE_ENV === 'development') {
-    console.log(process.env.ZOOM_WEBHOOK_SECRET_TOKEN);
     console.log('headers:', req.headers);
-    console.log('body:', req.body);
+    console.log('body:', JSON.stringify(req.body, null, 2));
   }
 
   switch (event) {
