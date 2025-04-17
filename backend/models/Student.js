@@ -1,8 +1,8 @@
 import { Model } from 'sequelize';
 
 export default (sequelize, DataTypes) => {
-  class Students extends Model {}
-  Students.init(
+  class Student extends Model {}
+  Student.init(
     {
       name: {
         type: DataTypes.STRING,
@@ -23,13 +23,13 @@ export default (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'Students',
+      modelName: 'Student',
     }
   );
 
-  Students.associate = (/* models */) => {
+  Student.associate = (/* models */) => {
     // associations can be defined here
   };
 
-  return Students;
+  return Student;
 };
