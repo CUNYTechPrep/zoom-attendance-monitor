@@ -44,7 +44,7 @@ router.post('/', (req, res) => {
       return res.status(201).json({ message: 'Meeting has started.' });
     }
     case WEBHOOK_PARTICIPANT_LEFT: {
-      const participantId = req.body.payload.object.participant.id;
+      const participantId = req.body.payload.object.participant.user_id;
       const participantName = req.body.payload.object.participant.user_name;
       const participantLeftTime =
         req.body.payload.object.participant.leave_time;
