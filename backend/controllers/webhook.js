@@ -4,7 +4,7 @@ import {
   WEBHOOK_VALIDATION,
   WEBHOOK_MEETING_ENDED,
   WEBHOOK_MEETING_STARTED,
-  WEBHOOK_PARTICIPANT_LEFT
+  WEBHOOK_PARTICIPANT_LEFT,
 } from '../service/events.js';
 
 const router = Router();
@@ -46,11 +46,16 @@ router.post('/', (req, res) => {
     case WEBHOOK_PARTICIPANT_LEFT: {
       const participantId = req.body.payload.object.participant.id;
       const participantName = req.body.payload.object.participant.user_name;
-      const participantLeftTime = req.body.payload.object.participant.leave_time;
+      const participantLeftTime =
+        req.body.payload.object.participant.leave_time;
       const meetingName = req.body.payload.object.topic;
 
-      console.log(`${participantId} - ${participantName} left ${meetingName} at ${participantLeftTime}`);
-      return res.status(200).json({ message: 'Participant has left the meeting.' });
+      console.log(
+        `${participantId} - ${participantName} left ${meetingName} at ${participantLeftTime}`
+      );
+      return res
+        .status(200)
+        .json({ message: 'Participant has left the meeting.' });
     }
     default:
       console.log(`no match found for event ${event}`);

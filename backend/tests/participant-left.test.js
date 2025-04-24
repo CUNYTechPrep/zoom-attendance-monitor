@@ -6,7 +6,9 @@ import { WEBHOOK_PARTICIPANT_LEFT } from '../service/events.js';
 
 describe('meeting.participant_left webhook', () => {
   it('logs participant left event and responds with 200', async () => {
-    const consoleLogSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
+    const consoleLogSpy = jest
+      .spyOn(console, 'log')
+      .mockImplementation(() => {});
 
     const response = await request(app)
       .post('/api/webhook')
