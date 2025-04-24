@@ -3,10 +3,10 @@ import { hashZoomPlainToken } from '../service/webhook.js';
 import {
   WEBHOOK_VALIDATION,
   WEBHOOK_MEETING_ENDED,
-  WEBHOOK_PARTICIPANT_JOINED,
-  WEBHOOK_PARTICIPANT_JOINED_BH,
   WEBHOOK_MEETING_STARTED,
   WEBHOOK_RECORDING_COMPLETED,
+  WEBHOOK_PARTICIPANT_JOINED,
+  WEBHOOK_PARTICIPANT_JOINED_BH,
 } from '../service/events.js';
 
 const router = Router();
@@ -53,25 +53,34 @@ router.post('/', (req, res) => {
       return res.status(200).json({ message: 'Recording completed.' });
     }
 
-    case WEBHOOK_PARTICIPANT_JOINED:{
-         console.log('participant joined', req.body.payload.object.participant);
-        const participant_info = JSON.stringify({
-          account_id: req.body.payload.account_id,
-          user_name: req.body.payload.object.participant.user_name,
-          phone_number: req.body.payload.object.participant.phone_number
-            ? req.body.payload.object.participant.phone_number
-            : '',
-        });
-        return res.status(200).json(participant_info);
+    case WEBHOOK_PARTICIPANT_JOINED: {
+      const { topic, participant } = req.body.payload.object;
+      console.log(
+        `${participant.participant_uuid} - ${participant.user_name} joined ${topic} at ${participant.join_time}`
+      );
+
+      const participantInfo = {
+        participant_id: participant.participant_uuid,
+        participant_name: participant.user_name,
+        join_time: participant.join_time,
+      };
+
+      return res.status(200).json(participantInfo);
     }
-    case WEBHOOK_PARTICIPANT_JOINED_BH:{
-      const participant_info = JSON.stringify({
-        account_id: req.body.payload.account_id,
-        user_name: req.body.payload.object.participant.user_name,
-      });
-   console.log('participant joined before host', req.body);
-   return res.status(200).json(participant_info);
-  }
+    case WEBHOOK_PARTICIPANT_JOINED_BH: {
+      const { participant, topic } = req.body.payload.object;
+      console.log(
+        `${participant.id} - ${participant.user_name} joined ${topic} at ${participant.date_time}`
+      );
+
+      const participantInfo = {
+        participant_id: participant.participant_uuid,
+        participant_name: participant.user_name,
+        join_time: participant.join_time,
+      };
+
+      return res.status(200).json(participantInfo);
+    }
 
     default:
       console.log(`no match found for event ${event}`);
