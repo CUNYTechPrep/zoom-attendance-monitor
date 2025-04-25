@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from '../app';
+import app from '../app'; // Adjust this to point to your app
 import { WEBHOOK_VALIDATION } from '../service/events.js';
 import crypto from 'crypto';
 
@@ -21,6 +21,7 @@ describe('webhook endpoint', () => {
             plainToken: plainTokenField,
           },
         });
+
       expect(response.statusCode).toBe(200);
 
       const { plainToken, encryptedToken } = response.body;
