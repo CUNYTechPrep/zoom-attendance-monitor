@@ -127,6 +127,6 @@ router.get('/api/students', async (req, res) => {
     console.error('Error fetching students:', error);
     return res.status(500).json({ error: 'Internal Server Error' });
   }
-})
+});
 
 export default router;
