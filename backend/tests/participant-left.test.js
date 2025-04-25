@@ -18,9 +18,9 @@ describe('meeting.participant_left webhook', () => {
           object: {
             topic: 'Team Sync',
             participant: {
-              user_id: 'abc123', 
+              user_id: 'abc123',
               user_name: 'John Doe',
-              leave_time: '2025-04-10T10:15:00Z'
+              leave_time: '2025-04-10T10:15:00Z',
             },
           },
         },
