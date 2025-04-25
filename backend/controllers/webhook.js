@@ -10,7 +10,7 @@ import {
   WEBHOOK_PARTICIPANT_JOINED,
   WEBHOOK_PARTICIPANT_JOINED_BH,
 } from '../service/events.js';
-import { Student } from '../models/Student.js';
+import Student from '../models/Student.js';
 
 const router = Router();
 
