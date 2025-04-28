@@ -8,9 +8,11 @@ export async function up(queryInterface, Sequelize) {
     },
     meeting_name: {
       type: Sequelize.STRING,
+      allowNull: false,
     },
     start: {
       type: Sequelize.DATE,
+      allowNull: false,
     },
     end: {
       type: Sequelize.DATE,
