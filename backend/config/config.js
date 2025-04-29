@@ -30,7 +30,4 @@ export default {
     host: process.env.HOST,
     dialect: 'postgresql',
   },
-  // Add the required vars to the exported config
-  ZOOM_WEBHOOK_SECRET_TOKEN: process.env.ZOOM_WEBHOOK_SECRET_TOKEN,
-  PORT: process.env.PORT,
 };
