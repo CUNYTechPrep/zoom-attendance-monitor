@@ -1,34 +1,34 @@
 import request from 'supertest';
-import app from '../app'; 
+import app from '../app';
 import db, { sequelize } from '../models';
-// import Student from '../models/Student.model.js'; 
+// import Student from '../models/Student.model.js';
 
 const { Student } = db;
 
 describe('GET /api/students', () => {
   beforeAll(async () => {
     try {
-        console.log('Syncing database...');
-        await sequelize.sync({ force: true }); // Sync the database and clear existing data
-        console.log('Database synced successfully!');
-        
-        await Student.bulkCreate([
-            {
-              name: 'John Doe',
-              email: 'johndoe@example.com',
-              student_id: '123456789',
-            },
-            {
-              name: 'Jane Doe',
-              email: 'janedoe@example.com',
-              student_id: '987654321',
-            },
-            {
-              name: 'Alice Smith',
-              email: 'alices@example.com',
-              student_id: '456789123',
-            },
-        ]); 
+      console.log('Syncing database...');
+      await sequelize.sync({ force: true }); // Sync the database and clear existing data
+      console.log('Database synced successfully!');
+
+      await Student.bulkCreate([
+        {
+          name: 'John Doe',
+          email: 'johndoe@example.com',
+          student_id: '123456789',
+        },
+        {
+          name: 'Jane Doe',
+          email: 'janedoe@example.com',
+          student_id: '987654321',
+        },
+        {
+          name: 'Alice Smith',
+          email: 'alices@example.com',
+          student_id: '456789123',
+        },
+      ]);
     } catch (error) {
       console.error('Error connecting to the database:', error);
     }
@@ -37,9 +37,9 @@ describe('GET /api/students', () => {
   afterAll(async () => {
     // Clean up the test database
     try {
-        await sequelize.close();
+      await sequelize.close();
     } catch (error) {
-        console.error('Error closing the database:', error);
+      console.error('Error closing the database:', error);
     }
   });
 
@@ -57,14 +57,18 @@ describe('GET /api/students', () => {
   });
 
   it('should return students matching the email query parameter', async () => {
-    const response = await request(app).get('/api/students?email=janedoe@example.com');
+    const response = await request(app).get(
+      '/api/students?email=janedoe@example.com'
+    );
     expect(response.status).toBe(200);
     expect(response.body.length).toBe(1); // Ensure only matching students are returned
     expect(response.body[0].email).toBe('janedoe@example.com');
   });
 
   it('should return students matching both name and email query parameters', async () => {
-    const response = await request(app).get('/api/students?name=Alice&email=alices@example.com');
+    const response = await request(app).get(
+      '/api/students?name=Alice&email=alices@example.com'
+    );
     expect(response.status).toBe(200);
     expect(response.body.length).toBe(1); // Ensure only matching students are returned
     expect(response.body[0].name).toBe('Alice Smith');

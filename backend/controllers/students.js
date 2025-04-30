@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
 
   try {
     let whereClause = {
-      [Op.or]: []
+      [Op.or]: [],
     };
 
     if (name) {
@@ -35,4 +35,4 @@ router.get('/', async (req, res) => {
   }
 });
 
-export default router
+export default router;
