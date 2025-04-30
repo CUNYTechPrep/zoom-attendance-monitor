@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import { Op } from 'sequelize';
 import { hashZoomPlainToken } from '../service/webhook.js';
 import {
   WEBHOOK_VALIDATION,
