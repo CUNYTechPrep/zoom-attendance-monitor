@@ -12,6 +12,6 @@ router.use('/healthcheck', healthcheckController);
 
 router.use('/webhook', webhookController);
 
-router.use("/api/students", studentsController);
+router.use("/students", studentsController);
 
 export default router;
