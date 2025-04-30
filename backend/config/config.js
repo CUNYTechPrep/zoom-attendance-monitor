@@ -1,5 +1,11 @@
 import 'dotenv/config';
 
+export const validateEnv = () => {
+  const requiredVars = ['ZOOM_WEBHOOK_SECRET_TOKEN', 'PORT'];
+
+  return requiredVars.filter((varName) => !process.env[varName]);
+};
+
 export default {
   development: {
     username: 'root',
