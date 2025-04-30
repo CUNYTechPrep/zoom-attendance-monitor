@@ -11,7 +11,7 @@
     "format": "prettier . --check",
     "lint": "eslint .",
     "start": "node index.js",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
     "test:ci": "NODE_OPTIONS=--experimental-vm-modules jest --ci --colors",
     "dev": "node --watch --env-file=.env index.js",
     "build": "cd ../frontend && npm install && npm run build",
