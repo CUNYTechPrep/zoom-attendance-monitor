@@ -1,5 +1,8 @@
 import { Router } from 'express';
-import Student from '../models/Student.js';
+import { Op } from 'sequelize';
+import db from '../models/index.js';
+
+const { Student } = db;
 
 const router = Router();
 
@@ -7,13 +10,19 @@ router.get('/', async (req, res) => {
   const { name, email } = req.query;
 
   try {
-    let whereClause = {};
+    let whereClause = {
+      [Op.or]: []
+    };
 
     if (name) {
-      whereClause.name = { [Op.iLike]: `%${name}%` };
+      whereClause[Op.or].push({ name: { [Op.like]: `%${name}%` } });
     }
     if (email) {
-      whereClause.email = { [Op.iLike]: `%${email}%` };
+      whereClause[Op.or].push({ email: { [Op.like]: `%${email}%` } });
+    }
+
+    if (whereClause[Op.or].length === 0) {
+      whereClause = {};
     }
 
     // If both name and email are provided, we can combine them in the where clause.

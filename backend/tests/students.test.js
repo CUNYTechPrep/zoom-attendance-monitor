@@ -1,34 +1,46 @@
 import request from 'supertest';
 import app from '../app'; 
-import { jest } from '@jest/globals';
-import { sequelize, Student } from '../models';
+import db, { sequelize } from '../models';
+// import Student from '../models/Student.model.js'; 
+
+const { Student } = db;
 
 describe('GET /api/students', () => {
   beforeAll(async () => {
-    // Sync the test database and add seed data
-    await sequelize.sync({ force: true });
-    await Student.bulkCreate([
-      {
-        name: 'John Doe',
-        email: 'johndoe@example.com',
-        student_id: '123456789',
-      },
-      {
-        name: 'Jane Doe',
-        email: 'janedoe@example.com',
-        student_id: '987654321',
-      },
-      {
-        name: 'Alice Smith',
-        email: 'alices@example.com',
-        student_id: '456789123',
-      },
-    ]);
+    try {
+        console.log('Syncing database...');
+        await sequelize.sync({ force: true }); // Sync the database and clear existing data
+        console.log('Database synced successfully!');
+        
+        await Student.bulkCreate([
+            {
+              name: 'John Doe',
+              email: 'johndoe@example.com',
+              student_id: '123456789',
+            },
+            {
+              name: 'Jane Doe',
+              email: 'janedoe@example.com',
+              student_id: '987654321',
+            },
+            {
+              name: 'Alice Smith',
+              email: 'alices@example.com',
+              student_id: '456789123',
+            },
+        ]); 
+    } catch (error) {
+      console.error('Error connecting to the database:', error);
+    }
   });
 
   afterAll(async () => {
     // Clean up the test database
-    await sequelize.close();
+    try {
+        await sequelize.close();
+    } catch (error) {
+        console.error('Error closing the database:', error);
+    }
   });
 
   it('should return all students when no query parameters are provided', async () => {
