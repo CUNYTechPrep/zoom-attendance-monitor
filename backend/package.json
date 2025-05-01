@@ -10,7 +10,7 @@
   "scripts": {
     "format": "prettier . --check",
     "lint": "eslint .",
-    "start": "node app.js",
+    "start": "node index.js",
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
     "test:ci": "NODE_OPTIONS=--experimental-vm-modules jest --ci --colors",
     "dev": "node --watch --env-file=.env index.js",
