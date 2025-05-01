@@ -7,9 +7,9 @@ export default (sequelize, DataTypes) => {
     {
       id: {
         allowNull: false,
-        // autoIncrement: true,
+        autoIncrement: true,
         primaryKey: true,
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
       },
       meeting_name: {
         type: DataTypes.STRING,
