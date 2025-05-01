@@ -1,14 +1,13 @@
 import request from 'supertest';
 import app from '../app';
-import db, { sequelize } from '../models';
-// import Student from '../models/Student.model.js';
+import db from '../models';
 
 const { Student } = db;
 
 describe('GET /api/students', () => {
   beforeEach(async () => {
     try {
-      await Student.destroy({ where: {} }); 
+      await Student.destroy({ where: {} });
       await Student.bulkCreate([
         {
           name: 'John Doe',
