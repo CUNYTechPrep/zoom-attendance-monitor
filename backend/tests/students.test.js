@@ -6,12 +6,9 @@ import db, { sequelize } from '../models';
 const { Student } = db;
 
 describe('GET /api/students', () => {
-  beforeAll(async () => {
+  beforeEach(async () => {
     try {
-      console.log('Syncing database...');
-      await sequelize.sync({ force: true }); // Sync the database and clear existing data
-      console.log('Database synced successfully!');
-
+      await Student.destroy({ where: {} }); 
       await Student.bulkCreate([
         {
           name: 'John Doe',
@@ -31,15 +28,6 @@ describe('GET /api/students', () => {
       ]);
     } catch (error) {
       console.error('Error connecting to the database:', error);
-    }
-  });
-
-  afterAll(async () => {
-    // Clean up the test database
-    try {
-      await sequelize.close();
-    } catch (error) {
-      console.error('Error closing the database:', error);
     }
   });
 
