@@ -1,7 +1,6 @@
 import { Model } from 'sequelize';
 
 export default (sequelize, DataTypes) => {
-
   class StudentEvent extends Model {}
 
   StudentEvent.init(

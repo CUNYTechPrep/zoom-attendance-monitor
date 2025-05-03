@@ -30,5 +30,5 @@ export async function up(queryInterface, Sequelize) {
 
 export async function down(queryInterface, _Sequelize) {
   _Sequelize;
-  await queryInterface.dropTable('create-meetings');
+  await queryInterface.dropTable('Meetings');
 }
