@@ -32,7 +32,7 @@ export default (sequelize, DataTypes) => {
       modelName: 'StudentEvent',
     }
   );
-   
+
   StudentEvent.associate = (models) => {
     models.Student.hasMany(StudentEvent, { foreignKey: 'student_id' });
     models.Meeting.hasMany(StudentEvent, { foreignKey: 'meeting_id' });
