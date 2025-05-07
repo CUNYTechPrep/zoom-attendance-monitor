@@ -1,0 +1,10 @@
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+}
+
+.home-wrapper {
+  height: calc(100vh - 56px); /* Adjust if your navbar is 56px tall */
+}
