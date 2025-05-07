@@ -19,17 +19,12 @@ export default (sequelize, DataTypes) => {
       student_id: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
       },
     },
     {
       sequelize,
       modelName: 'Student',
-      indexes: [
-        {
-          unique: true,
-          fields: ['student_id', 'meeting_id'],
-        },
-      ],
     }
   );
 
