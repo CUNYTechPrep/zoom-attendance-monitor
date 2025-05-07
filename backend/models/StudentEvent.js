@@ -1,6 +1,5 @@
 import { Model } from 'sequelize';
-import Student from './Student';
-import Meeting from './Meeting';
+
 export default (sequelize, DataTypes) => {
   class StudentEvent extends Model {}
 
@@ -33,12 +32,12 @@ export default (sequelize, DataTypes) => {
       modelName: 'StudentEvent',
     }
   );
-  // eslint-disable-next-line no-unused-vars
+   
   StudentEvent.associate = (models) => {
-    Student.hasMany(StudentEvent, { foreignKey: 'student_id' });
-    Meeting.hasMany(StudentEvent, { foreignKey: 'meeting_id' });
-    StudentEvent.belongsTo(Student, { foreignKey: 'student_id' });
-    StudentEvent.belongsTo(Meeting, { foreignKey: 'meeting_id' });
+    models.Student.hasMany(StudentEvent, { foreignKey: 'student_id' });
+    models.Meeting.hasMany(StudentEvent, { foreignKey: 'meeting_id' });
+    StudentEvent.belongsTo(models.Student, { foreignKey: 'student_id' });
+    StudentEvent.belongsTo(models.Meeting, { foreignKey: 'meeting_id' });
   };
   return StudentEvent;
 };
