@@ -17,6 +17,7 @@ export async function up(queryInterface, Sequelize) {
     student_id: {
       allowNull: false,
       type: Sequelize.STRING,
+      unique: true,
     },
     createdAt: {
       allowNull: false,

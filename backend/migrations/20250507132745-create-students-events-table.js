@@ -1,21 +1,24 @@
 export async function up(queryInterface, Sequelize) {
-  await queryInterface.createTable('Meetings', {
-    id: {
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
-      type: Sequelize.INTEGER,
-    },
-    meeting_name: {
+  await queryInterface.createTable('StudentEvents', {
+    student_id: {
       type: Sequelize.STRING,
       allowNull: false,
+      references: {
+        model: 'Students',
+        key: 'student_id',
+      },
     },
-    start: {
-      type: Sequelize.DATE,
+    meeting_id: {
+      type: Sequelize.STRING,
       allowNull: false,
+      references: {
+        model: 'Meetings',
+        key: 'meeting_id',
+      },
     },
-    end: {
-      type: Sequelize.DATE,
+    event_action: {
+      type: Sequelize.STRING,
+      allowNull: false,
     },
     createdAt: {
       allowNull: false,
@@ -30,5 +33,5 @@ export async function up(queryInterface, Sequelize) {
 
 export async function down(queryInterface, _Sequelize) {
   _Sequelize;
-  await queryInterface.dropTable('Meetings');
+  await queryInterface.dropTable('StudentEvents');
 }

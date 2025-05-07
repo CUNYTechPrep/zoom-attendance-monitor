@@ -24,6 +24,12 @@ export default (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: 'Student',
+      indexes: [
+        {
+          unique: true,
+          fields: ['student_id', 'meeting_id'],
+        },
+      ],
     }
   );
 

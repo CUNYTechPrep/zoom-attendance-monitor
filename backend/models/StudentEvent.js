@@ -1,16 +1,11 @@
 import { Model } from 'sequelize';
-
+import Student from './Student';
+import Meeting from './Meeting';
 export default (sequelize, DataTypes) => {
   class StudentEvent extends Model {}
 
   StudentEvent.init(
     {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: DataTypes.INTEGER,
-      },
       student_id: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -22,6 +17,7 @@ export default (sequelize, DataTypes) => {
       event_action: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: { isIn: [['JOINED', 'LEFT']] },
       },
       createdAt: {
         allowNull: false,
@@ -37,9 +33,12 @@ export default (sequelize, DataTypes) => {
       modelName: 'StudentEvent',
     }
   );
-  //  StudentEvent.associate(models) {
-  //     // define association here
-  //   }
-
+  // eslint-disable-next-line no-unused-vars
+  StudentEvent.associate = (models) => {
+    Student.hasMany(StudentEvent, { foreignKey: 'student_id' });
+    Meeting.hasMany(StudentEvent, { foreignKey: 'meeting_id' });
+    StudentEvent.belongsTo(Student, { foreignKey: 'student_id' });
+    StudentEvent.belongsTo(Meeting, { foreignKey: 'meeting_id' });
+  };
   return StudentEvent;
 };
