@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom';
 // import PostsListPage from './pages/PostsListPage';
 import PostFormPage from './pages/PostFormPage';
 import ShowPostPage from './pages/ShowPostPage';
-import AboutUsPage from './pages/AboutUsPage';
 import HomePage from './pages/HomePage';
 
 import './App.css';
@@ -21,11 +20,6 @@ function Navigation() {
               Create a Micro Post
             </NavLink>
           </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/about-us">
-              About Us
-            </NavLink>
-          </li>
         </ul>
       </div>
     </nav>
@@ -41,7 +35,6 @@ function App() {
           <Routes>
             <Route path="/posts/new" element={<PostFormPage />} />
             <Route path="/posts/:id" element={<ShowPostPage />} />
-            <Route path="/about-us" element={<AboutUsPage />} />
             <Route path="/" element={<HomePage />} />
           </Routes>
         </div>
