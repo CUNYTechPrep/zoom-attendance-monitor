@@ -6,6 +6,7 @@ import AboutUsPage from './pages/AboutUsPage';
 import HomePage from './pages/HomePage';
 
 import './App.css';
+import SearchFormStudents from './pages/SearchFormStudents';
 
 function Navigation() {
   return (
@@ -42,6 +43,7 @@ function App() {
             <Route path="/posts/new" element={<PostFormPage />} />
             <Route path="/posts/:id" element={<ShowPostPage />} />
             <Route path="/about-us" element={<AboutUsPage />} />
+            <Route path="/search/student" element={<SearchFormStudents />} />
             <Route path="/" element={<HomePage />} />
           </Routes>
         </div>
