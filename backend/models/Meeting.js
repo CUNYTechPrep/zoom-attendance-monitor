@@ -11,6 +11,12 @@ export default (sequelize, DataTypes) => {
         primaryKey: true,
         type: DataTypes.INTEGER,
       },
+      meeting_id: {
+        // A change made, before it was just id, but the table needs meeting id. I added a separate id column with PK constraint.
+        allowNull: false,
+        unique: true,
+        type: DataTypes.STRING,
+      },
       meeting_name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -36,14 +42,9 @@ export default (sequelize, DataTypes) => {
       modelName: 'Meeting',
     }
   );
-  /**
-   * Helper method for defining associations.
-   * This method is not a part of Sequelize lifecycle.
-   * The `models/index` file will call this method automatically.
-   */
-  //  Meeting.associate(models) {
-  //     // define association here
-  //   }
+
+  // eslint-disable-next-line no-unused-vars
+  Meeting.associate = (models) => {};
 
   return Meeting;
 };

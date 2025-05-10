@@ -1,21 +1,22 @@
 export async function up(queryInterface, Sequelize) {
-  await queryInterface.createTable('Meetings', {
+  await queryInterface.createTable('Students', {
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: Sequelize.INTEGER,
     },
-    meeting_name: {
+    name: {
+      allowNull: false,
       type: Sequelize.STRING,
-      allowNull: false,
     },
-    start: {
-      type: Sequelize.DATE,
+    email: {
       allowNull: false,
+      type: Sequelize.STRING,
     },
-    end: {
-      type: Sequelize.DATE,
+    student_id: {
+      allowNull: false,
+      type: Sequelize.STRING,
     },
     createdAt: {
       allowNull: false,
@@ -26,9 +27,15 @@ export async function up(queryInterface, Sequelize) {
       type: Sequelize.DATE,
     },
   });
+
+  await queryInterface.changeColumn('Students', 'student_id', {
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true,
+  });
 }
 
+// eslint-disable-next-line no-unused-vars
 export async function down(queryInterface, _Sequelize) {
-  _Sequelize;
-  await queryInterface.dropTable('create-meetings');
+  await queryInterface.dropTable('Students');
 }
