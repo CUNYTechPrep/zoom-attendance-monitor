@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom';
-import PostsListPage from './pages/PostsListPage';
+// import PostsListPage from './pages/PostsListPage';
 import PostFormPage from './pages/PostFormPage';
 import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AboutUsPage';
+import HomePage from './pages/HomePage';
 
 import './App.css';
 
@@ -11,8 +12,9 @@ function Navigation() {
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
-          Micro Blog
+          Zoom Attendance Monitor
         </Link>
+
         <ul className="navbar-nav me-auto">
           <li className="nav-item">
             <NavLink className="nav-link" to="/posts/new">
@@ -40,7 +42,7 @@ function App() {
             <Route path="/posts/new" element={<PostFormPage />} />
             <Route path="/posts/:id" element={<ShowPostPage />} />
             <Route path="/about-us" element={<AboutUsPage />} />
-            <Route path="/" element={<PostsListPage />} />
+            <Route path="/" element={<HomePage />} />
           </Routes>
         </div>
       </div>
