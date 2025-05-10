@@ -1,22 +1,41 @@
-'use strict';
+export async function up(queryInterface, Sequelize) {
+  await queryInterface.createTable('Students', {
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: Sequelize.INTEGER,
+    },
+    name: {
+      allowNull: false,
+      type: Sequelize.STRING,
+    },
+    email: {
+      allowNull: false,
+      type: Sequelize.STRING,
+    },
+    student_id: {
+      allowNull: false,
+      type: Sequelize.STRING,
+    },
+    createdAt: {
+      allowNull: false,
+      type: Sequelize.DATE,
+    },
+    updatedAt: {
+      allowNull: false,
+      type: Sequelize.DATE,
+    },
+  });
 
-/** @type {import('sequelize-cli').Migration} */
-module.exports = {
-  async up (queryInterface, Sequelize) {
-    /**
-     * Add altering commands here.
-     *
-     * Example:
-     * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
-     */
-  },
+  await queryInterface.changeColumn('Students', 'student_id', {
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true,
+  });
+}
 
-  async down (queryInterface, Sequelize) {
-    /**
-     * Add reverting commands here.
-     *
-     * Example:
-     * await queryInterface.dropTable('users');
-     */
-  }
-};
+// eslint-disable-next-line no-unused-vars
+export async function down(queryInterface, _Sequelize) {
+  await queryInterface.dropTable('Students');
+}
