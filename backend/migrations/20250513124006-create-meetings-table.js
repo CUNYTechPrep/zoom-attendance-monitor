@@ -1,14 +1,10 @@
 export async function up(queryInterface, Sequelize) {
   await queryInterface.createTable('Meetings', {
     id: {
-      allowNull: false,
-      autoIncrement: true,
       primaryKey: true,
       type: Sequelize.INTEGER,
-    },
-    meeting_id: {
+      autoIncrement: true,
       allowNull: false,
-      type: Sequelize.STRING,
     },
     meeting_name: {
       type: Sequelize.STRING,
@@ -22,15 +18,19 @@ export async function up(queryInterface, Sequelize) {
       type: Sequelize.DATE,
     },
     createdAt: {
-      allowNull: false,
       type: Sequelize.DATE,
+      allowNull: false,
     },
     updatedAt: {
-      allowNull: false,
       type: Sequelize.DATE,
+      allowNull: false,
     },
   });
 
+  await queryInterface.addColumn('Meetings', 'meeting_id', {
+    type: Sequelize.STRING,
+    allowNull: false,
+  });
   await queryInterface.changeColumn('Meetings', 'meeting_id', {
     type: Sequelize.STRING,
     allowNull: false,

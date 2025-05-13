@@ -6,16 +6,10 @@ export default (sequelize, DataTypes) => {
   Meeting.init(
     {
       id: {
-        allowNull: false,
+        type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
-        type: DataTypes.INTEGER,
-      },
-      meeting_id: {
-        // A change made, before it was just id, but the table needs meeting id. I added a separate id column with PK constraint.
         allowNull: false,
-        unique: true,
-        type: DataTypes.STRING,
       },
       meeting_name: {
         type: DataTypes.STRING,
@@ -43,8 +37,9 @@ export default (sequelize, DataTypes) => {
     }
   );
 
-  // eslint-disable-next-line no-unused-vars
-  Meeting.associate = (models) => {};
+  Meeting.associate = (models) => {
+    Meeting.hasMany(models.StudentEvent, { foreignKey: 'meeting_id' });
+  };
 
   return Meeting;
 };

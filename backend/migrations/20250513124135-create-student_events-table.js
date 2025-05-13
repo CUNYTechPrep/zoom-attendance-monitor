@@ -29,6 +29,13 @@ export async function up(queryInterface, Sequelize) {
       type: Sequelize.DATE,
     },
   });
+
+  await queryInterface.addColumn('StudentEvents', 'id', {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+    allowNull: false,
+  });
 }
 
 export async function down(queryInterface, _Sequelize) {

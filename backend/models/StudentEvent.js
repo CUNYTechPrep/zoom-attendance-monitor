@@ -19,12 +19,12 @@ export default (sequelize, DataTypes) => {
         validate: { isIn: [['JOINED', 'LEFT']] },
       },
       createdAt: {
-        allowNull: false,
         type: DataTypes.DATE,
+        allowNull: false,
       },
       updatedAt: {
-        allowNull: false,
         type: DataTypes.DATE,
+        allowNull: false,
       },
     },
     {
@@ -34,8 +34,6 @@ export default (sequelize, DataTypes) => {
   );
 
   StudentEvent.associate = (models) => {
-    models.Student.hasMany(StudentEvent, { foreignKey: 'student_id' });
-    models.Meeting.hasMany(StudentEvent, { foreignKey: 'meeting_id' });
     StudentEvent.belongsTo(models.Student, { foreignKey: 'student_id' });
     StudentEvent.belongsTo(models.Meeting, { foreignKey: 'meeting_id' });
   };
