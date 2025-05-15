@@ -13,14 +13,6 @@ function Navigation() {
         <Link className="navbar-brand" to="/">
           Zoom Attendance Monitor
         </Link>
-
-        <ul className="navbar-nav me-auto">
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/posts/new">
-              Create a Micro Post
-            </NavLink>
-          </li>
-        </ul>
       </div>
     </nav>
   );
