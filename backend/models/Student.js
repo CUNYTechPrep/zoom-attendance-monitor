@@ -28,7 +28,7 @@ export default (sequelize, DataTypes) => {
     }
   );
 
-  Student.associate = ( models ) => {
+  Student.associate = (models) => {
     Student.hasMany(models.StudentEvent, { foreignKey: 'student_id' });
   };
 

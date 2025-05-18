@@ -1,6 +1,6 @@
 export async function up(queryInterface, Sequelize) {
   await queryInterface.createTable('StudentEvents', {
-    id:{
+    id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
       autoIncrement: true,
