@@ -1,5 +1,11 @@
 export async function up(queryInterface, Sequelize) {
   await queryInterface.createTable('StudentEvents', {
+    id:{
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false,
+    },
     student_id: {
       type: Sequelize.STRING,
       allowNull: false,
@@ -28,13 +34,6 @@ export async function up(queryInterface, Sequelize) {
       allowNull: false,
       type: Sequelize.DATE,
     },
-  });
-
-  await queryInterface.addColumn('StudentEvents', 'id', {
-    type: Sequelize.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-    allowNull: false,
   });
 }
 

@@ -26,16 +26,6 @@ export async function up(queryInterface, Sequelize) {
       allowNull: false,
     },
   });
-
-  await queryInterface.addColumn('Meetings', 'meeting_id', {
-    type: Sequelize.STRING,
-    allowNull: false,
-  });
-  await queryInterface.changeColumn('Meetings', 'meeting_id', {
-    type: Sequelize.STRING,
-    allowNull: false,
-    unique: true,
-  });
 }
 
 export async function down(queryInterface, _Sequelize) {
