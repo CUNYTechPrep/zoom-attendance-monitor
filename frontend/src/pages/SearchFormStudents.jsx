@@ -1,11 +1,12 @@
 import { useState } from "react";
+import LoadingSpinner from "../components/LoadingSpinner";
+import ErrorAlert from "../components/ErrorAlert";
 
 function SearchFormStudents() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState([]);
-  const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
 
   const handleNameChange = (event) => {
@@ -33,7 +34,6 @@ function SearchFormStudents() {
       if (response.ok) {
         const data = await response.json();
         setResults(data);
-        setSuccess(true);
       } else {
         setError(true);
       }
@@ -47,6 +47,7 @@ function SearchFormStudents() {
 
   return (
     <div className="home-wrapper d-flex flex-column justify-content-center align-items-center text-center w-100 bg-light">
+      {error && <ErrorAlert details={'Failed to fetch students'} />}
       <h1>Search by Student</h1>
       <div className="d-grid gap-3 w-100 px-3" style={{ maxWidth: '300px' }}>
         <form className="mb-3">
@@ -62,7 +63,7 @@ function SearchFormStudents() {
             Search
           </button>
         </form>
-
+        {loading && <div className="my-3"><LoadingSpinner /></div>}
         <div className="results mt-4">
           {results.length > 0 ? (
             <ul className="list-group">
