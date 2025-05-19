@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 function HomePage() {
   return (
@@ -6,7 +6,9 @@ function HomePage() {
       <h1 className="mb-4">ZOOM ATTENDANCE</h1>
       <div className="d-grid gap-3 w-100 px-3" style={{ maxWidth: '300px' }}>
         <button className="btn btn-primary btn-lg">Search by Meeting</button>
-        <Link className="btn btn-secondary btn-lg" to="/search/student">Search by Student</Link>
+        <Link className="btn btn-secondary btn-lg" to="/search/student">
+          Search by Student
+        </Link>
       </div>
     </div>
   );
