@@ -5,6 +5,7 @@ import ShowPostPage from './pages/ShowPostPage';
 import HomePage from './pages/HomePage';
 
 import './App.css';
+import SearchFormStudents from './pages/SearchFormStudents';
 
 function Navigation() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Routes>
             <Route path="/posts/new" element={<PostFormPage />} />
             <Route path="/posts/:id" element={<ShowPostPage />} />
+            <Route path="/search/student" element={<SearchFormStudents />} />
             <Route path="/" element={<HomePage />} />
           </Routes>
         </div>
