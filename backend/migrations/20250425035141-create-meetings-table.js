@@ -1,10 +1,10 @@
 export async function up(queryInterface, Sequelize) {
   await queryInterface.createTable('Meetings', {
     id: {
-      allowNull: false,
-      autoIncrement: true,
       primaryKey: true,
       type: Sequelize.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
     },
     meeting_name: {
       type: Sequelize.STRING,
@@ -18,17 +18,17 @@ export async function up(queryInterface, Sequelize) {
       type: Sequelize.DATE,
     },
     createdAt: {
-      allowNull: false,
       type: Sequelize.DATE,
+      allowNull: false,
     },
     updatedAt: {
-      allowNull: false,
       type: Sequelize.DATE,
+      allowNull: false,
     },
   });
 }
 
 export async function down(queryInterface, _Sequelize) {
   _Sequelize;
-  await queryInterface.dropTable('create-meetings');
+  await queryInterface.dropTable('Meetings');
 }
