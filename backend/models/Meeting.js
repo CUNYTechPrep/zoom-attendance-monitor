@@ -11,6 +11,10 @@ export default (sequelize, DataTypes) => {
         primaryKey: true,
         allowNull: false,
       },
+      meeting_id: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       meeting_name: {
         type: DataTypes.STRING,
         allowNull: false,

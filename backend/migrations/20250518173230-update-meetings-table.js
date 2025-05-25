@@ -2,7 +2,10 @@ export async function up(queryInterface, Sequelize) {
   await queryInterface.addColumn('Meetings', 'meeting_id', {
     type: Sequelize.STRING,
     allowNull: false,
-    unique: true,
+  });
+  await queryInterface.addConstraint('Meetings', {
+    type: 'unique',
+    fields: ['meeting_id'],
   });
 }
 // eslint-disable-next-line no-unused-vars
