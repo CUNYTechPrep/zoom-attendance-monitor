@@ -19,6 +19,7 @@ export default (sequelize, DataTypes) => {
       student_id: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
       },
     },
     {
@@ -27,8 +28,8 @@ export default (sequelize, DataTypes) => {
     }
   );
 
-  Student.associate = (/* models */) => {
-    // associations can be defined here
+  Student.associate = (models) => {
+    Student.hasMany(models.StudentEvent, { foreignKey: 'student_id' });
   };
 
   return Student;

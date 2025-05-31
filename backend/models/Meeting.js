@@ -6,10 +6,14 @@ export default (sequelize, DataTypes) => {
   Meeting.init(
     {
       id: {
-        allowNull: false,
+        type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
-        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      meeting_id: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
       meeting_name: {
         type: DataTypes.STRING,
@@ -36,14 +40,10 @@ export default (sequelize, DataTypes) => {
       modelName: 'Meeting',
     }
   );
-  /**
-   * Helper method for defining associations.
-   * This method is not a part of Sequelize lifecycle.
-   * The `models/index` file will call this method automatically.
-   */
-  //  Meeting.associate(models) {
-  //     // define association here
-  //   }
+
+  Meeting.associate = (models) => {
+    Meeting.hasMany(models.StudentEvent, { foreignKey: 'meeting_id' });
+  };
 
   return Meeting;
 };
